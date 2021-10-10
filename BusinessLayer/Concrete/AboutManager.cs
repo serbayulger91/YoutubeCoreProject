@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Types.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -9,35 +10,35 @@ namespace BusinessLayer.Concrete
 {
     public class AboutManager : IAboutService
     {
-        EFAboutRepository efRepository; 
-        
-        public AboutManager()
+        IAboutDAL _aboutDAL;
+
+        public AboutManager(IAboutDAL aboutDAL)
         {
-            efRepository = new EFAboutRepository();
-        } 
+            _aboutDAL = aboutDAL;
+        }
         public void Add(About data)
         {
-            efRepository.Add(data);
+            _aboutDAL.Add(data);
         }
 
         public void Delete(About data)
         {
-            efRepository.Delete(data);
+            _aboutDAL.Delete(data);
         }
 
         public About GetById(int id)
         {
-            return efRepository.GetById(id);
+            return _aboutDAL.GetById(id);
         }
 
         public List<About> ListAllData()
         {
-            return efRepository.ListAllData();
+            return _aboutDAL.ListAllData();
         }
 
         public void Update(About data)
         {
-            efRepository.Update(data);
+            _aboutDAL.Update(data);
         }
     }
 }

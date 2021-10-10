@@ -1,37 +1,41 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Repositories;
-using System;
+using DataAccessLayer.Abstract;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLayer.Concrete
 {
     public class GenericManager<T> : IGenericService<T> where T : class
     {
-        GenericRepository<T> repository = new GenericRepository<T>();
+        IGenericDAL<T> _genericDAL;
+
+        public GenericManager(IGenericDAL<T> genericDAL)
+        {
+            _genericDAL = genericDAL;
+        }
+
         public void Add(T data)
         {
-            repository.Add(data);
+            _genericDAL.Add(data);
         }
 
         public void Delete(T data)
         {
-            repository.Delete(data);
+            _genericDAL.Delete(data);
         }
 
         public T GetById(int id)
         {
-            return repository.GetById(id);
+            return _genericDAL.GetById(id);
         }
 
         public List<T> ListAllData()
         {
-            return repository.ListAllData();
+            return _genericDAL.ListAllData();
         }
 
         public void Update(T data)
         {
-            repository.Update(data);
+            _genericDAL.Update(data);
         }
     }
 }

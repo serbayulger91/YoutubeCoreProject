@@ -1,43 +1,42 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Types.EntityFramework;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLayer.Concrete
 {
     public class CommentManager : ICommentService
     {
-        EFCommentRepository efRepository;
-        
-        public CommentManager()
+        ICommentDAL _commentDAL;
+
+        public CommentManager(ICommentDAL commentDAL)
         {
-            efRepository = new EFCommentRepository();
+            _commentDAL = commentDAL;
         }
+
         public void Add(Comment data)
         {
-            efRepository.Add(data);
+            _commentDAL.Add(data);
         }
 
         public void Delete(Comment data)
         {
-            efRepository.Delete(data);
+            _commentDAL.Delete(data);
         }
 
         public Comment GetById(int id)
         {
-            return efRepository.GetById(id);
+            return _commentDAL.GetById(id);
         }
 
         public List<Comment> ListAllData()
         {
-            return efRepository.ListAllData();
+            return _commentDAL.ListAllData();
         }
 
         public void Update(Comment data)
         {
-            efRepository.Update(data);
+            _commentDAL.Update(data);
         }
     }
 }

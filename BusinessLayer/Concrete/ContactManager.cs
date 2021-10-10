@@ -1,43 +1,42 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Types.EntityFramework;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLayer.Concrete
 {
     public class ContactManager : IContactService
     {
-        EFContactRepository efRepository; 
+        IContactDAL _contactDAL;
         
-        public ContactManager()
+        public ContactManager(IContactDAL contactDAL)
         {
-            efRepository = new EFContactRepository();
-        } 
+            _contactDAL = contactDAL;
+        }
+
         public void Add(Contact data)
         {
-            efRepository.Add(data);
+            _contactDAL.Add(data);
         }
 
         public void Delete(Contact data)
         {
-            efRepository.Delete(data);
+            _contactDAL.Delete(data);
         }
 
         public Contact GetById(int id)
         {
-            return efRepository.GetById(id);
+            return _contactDAL.GetById(id);
         }
 
         public List<Contact> ListAllData()
         {
-            return efRepository.ListAllData();
+            return _contactDAL.ListAllData();
         }
 
         public void Update(Contact data)
         {
-            efRepository.Update(data);
+            _contactDAL.Update(data);
         }
     }
 }

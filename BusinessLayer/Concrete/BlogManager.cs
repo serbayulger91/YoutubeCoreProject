@@ -1,43 +1,42 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Types.EntityFramework;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLayer.Concrete
 {
     public class BlogManager : IBlogService
     {
-        EFBlogRepository efRepository; 
-        
-        public BlogManager()        
+        IBlogDAL _blogDAL;
+
+        public BlogManager(IBlogDAL blogDAL)
         {
-            efRepository = new EFBlogRepository();
-        } 
+            _blogDAL = blogDAL;
+        }
+
         public void Add(Blog data)
         {
-            efRepository.Add(data);
+            _blogDAL.Add(data);
         }
 
         public void Delete(Blog data)
         {
-            efRepository.Delete(data);
+            _blogDAL.Delete(data);
         }
 
         public Blog GetById(int id)
         {
-            return efRepository.GetById(id);
+            return _blogDAL.GetById(id);
         }
 
         public List<Blog> ListAllData()
         {
-            return efRepository.ListAllData();
+            return _blogDAL.ListAllData();
         }
 
         public void Update(Blog data)
         {
-            efRepository.Update(data);
+            _blogDAL.Update(data);
         }
     }
 }
