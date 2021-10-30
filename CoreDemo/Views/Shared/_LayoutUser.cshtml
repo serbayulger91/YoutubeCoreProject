@@ -18,14 +18,18 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
     <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
     </script>
+    @*sweetalert*@
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <link href="~/CoreBlogTema/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="~/CoreBlogTema/css/single.css">
     <link href="~/CoreBlogTema/css/style.css" rel='stylesheet' type='text/css' />
@@ -38,21 +42,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--Header-->
 
     <header>
-        @await Html.PartialAsync("_partial_LayoutUserTopBar") 
+        @await Html.PartialAsync("_partial_LayoutUserTopBar")
 
         @await Html.PartialAsync("_partial_LayoutUserHeaderMenu")
     </header>
     <!--//header-->
-    <!--/banner-->
-    <div class="banner-inner">
-    </div>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Blog3</li>
-    </ol>
-    <!--//banner-->
     <!--/main-->
     @RenderBody()
     <!--//main-->
@@ -68,33 +62,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/CoreBlogTema/js/move-top.js"></script>
     <script src="~/CoreBlogTema/js/easing.js"></script>
     <script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 900);
-			});
-		});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
     </script>
     <!--// end-smoth-scrolling -->
 
     <script>
-		$(document).ready(function () {
-			/*
-									var defaults = {
-							  			containerID: 'toTop', // fading element id
-										containerHoverID: 'toTopHover', // fading element hover id
-										scrollSpeed: 1200,
-										easingType: 'linear'
-							 		};
-									*/
+        $(document).ready(function () {
+            /*
+                                    var defaults = {
+                                            containerID: 'toTop', // fading element id
+                                        containerHoverID: 'toTopHover', // fading element hover id
+                                        scrollSpeed: 1200,
+                                        easingType: 'linear'
+                                        };
+                                    */
 
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
 
-		});
+        });
     </script>
     <a href="#home" class="scroll" id="toTop" style="display: block;">
         <span id="toTopHover" style="opacity: 1;"> </span>
@@ -103,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //Custom-JavaScript-File-Links -->
     <script src="~/CoreBlogTema/js/bootstrap.js"></script>
 
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 </body>
 
 </html>

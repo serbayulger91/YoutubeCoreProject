@@ -1,0 +1,79 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Yazar Kayıt Sayfası</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            @Html.Label("Adı")
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.Label("Mail Adresi")
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.Label("Şifre")
+                            @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.Label("Şifreyi Tekrarla")
+                            @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.Label("Resim Dosyası")
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.Label("Açıklama")
+                            @Html.TextBoxFor(x => x.WriterAbout, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterAbout, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol!</button>
+                }
+                <p>
+                    <button class="btn-info" id="sartname">Kullanım Şartları için tıklayınız.</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('#sartname').click(function () {
+        Swal.fire({
+            title: 'Kullanım Şartları',
+            text: 'Bu site cookie oluşturabilir, size daha iyi ortam sunabilmek adına analiz yapar. Kayıt olarak bu şartları kabul edersiniz.',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    });
+</script>

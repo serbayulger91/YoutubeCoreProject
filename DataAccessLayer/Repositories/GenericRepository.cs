@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccessLayer.Repositories
@@ -29,6 +30,12 @@ namespace DataAccessLayer.Repositories
             return c.Set<T>().Find(id);
         }
 
+        public List<T> ListAllData(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().Where(filter).ToList();
+        }
+
         public List<T> ListAllData()
         {
             using var c = new Context();
@@ -42,5 +49,6 @@ namespace DataAccessLayer.Repositories
             c.Update(data);
             c.SaveChanges();
         }
+
     }
 }

@@ -24,6 +24,15 @@ namespace BusinessLayer.Concrete
             _blogDAL.Delete(data);
         }
 
+        public List<Blog> GetBlogListWithCategory()
+        {
+            return _blogDAL.GetListWithCategory();
+        }
+
+        public List<Blog> GetBlogListById(int id)
+        {
+            return _blogDAL.ListAllData(x => x.BlogID == id);
+        }
         public Blog GetById(int id)
         {
             return _blogDAL.GetById(id);

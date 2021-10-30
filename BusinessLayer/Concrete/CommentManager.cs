@@ -38,5 +38,9 @@ namespace BusinessLayer.Concrete
         {
             _commentDAL.Update(data);
         }
+        public List<Comment> GetCommentListByBlogId(int id)
+        {
+            return _commentDAL.ListAllData(x => x.BlogID == id);
+        }
     }
 }
