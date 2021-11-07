@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Types.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
@@ -11,16 +12,27 @@ namespace CoreDemo.Controllers
     public class CommentController : Controller
     {
 
-        CategoryManager cm = new CategoryManager(new EFCategoryRepository());
+        CommentManager cm = new CommentManager(new EFCommentRepository());
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
         public PartialViewResult PartialAddComment()
         {
             
             return PartialView();
         }
+        [HttpPost]
+        public PartialViewResult PartialAddComment(Comment comment)
+        {
+            comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            comment.CommentStatus = true;
+            comment.BlogID = 2;
+            cm.Add(comment);
+            return PartialView();
+        }
+
         public PartialViewResult CommentListByBlog(int id)
         {
             var values = cm.GetById(id);

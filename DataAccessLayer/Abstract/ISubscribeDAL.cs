@@ -5,9 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IBlogDAL : IGenericDAL<Blog>
+    public interface ISubscribeDAL : IGenericDAL<Subscribe>
     {
-        List<Blog> GetListWithCategory();
-        List<Blog> GetBlogListByWriterId(int Id);
     }
 }
